@@ -1,0 +1,206 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Документация API",
+		"description": "Описание API проектов unegui.mn и somon.tj"
+	},
+	"schemes": [
+		"https"
+	],
+	"basePath": "/api/items",
+	"paths": {
+		"/": {
+			"get": {
+				"summary": "Список объявлений",
+				"description": "Вернет список всех объявлений",
+				"tags": [
+					"Объявления"
+				],
+				"responses": {
+					"200": {
+						"description": "Список с рубриками и их описанием",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/AdvertsListing"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"AdvertsListing": {
+			"type": "object",
+			"properties": {
+				"count": {
+					"type": "integer",
+					"description": "Количество объявлений"
+				},
+				"next": {
+					"type": "string",
+					"description": "Перейти к следующему списку объявлений"
+				},
+				"previous": {
+					"type": "string",
+					"description": "Перейти к предыдущему списку объявлений"
+				},
+				"results": {
+					"type": "array",
+					"description": "Список объявлений",
+					"items": {
+						"$ref": "#/definitions/AdvertInListing"
+					}
+				}
+			}
+		},
+		"AdvertInListing": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer",
+					"description": "id объявления"
+				},
+				"title": {
+					"type": "string",
+					"description": "Заголовок"
+				},
+				"slug": {
+					"type": "string",
+					"description": "Буквенный идентификатор объявления"
+				},
+				"rubric": {
+					"type": "integer",
+					"description": "id рубрики в которой находится оьбъвление"
+				},
+				"description": {
+					"type": "string",
+					"description": "Полное описание объявления"
+				},
+				"city": {
+					"type": "integer",
+					"description": "id города в котором находится объявление"
+				},
+				"user": {
+					"type": "object",
+					"properties": {
+						"phone": {
+							"type": "string",
+							"description": "Телефон владельца объявления"
+						},
+						"name": {
+							"type": "string",
+							"description": "Имя валдельца объявления"
+						},
+						"id": {
+							"type": "integer",
+							"description": "id пользователя"
+						},
+						"joined": {
+							"type": "string",
+							"description": "Дата регистрации"
+						},
+						"has_email": {
+							"type": "boolean",
+							"description": "Наличие email"
+						}
+					}
+				},
+				"images": {
+					"type": "array",
+					"description": "Фотографии объявления",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "integer",
+								"description": "Идентификатор фото"
+							},
+							"orig": {
+								"type": "string",
+								"description": "url оригинала фото"
+							},
+							"url": {
+								"type": "string",
+								"description": "url картинки"
+							}
+						}
+					}
+				},
+				"attrs": {
+					"type": "object",
+					"description": "Атрибуты объявления",
+					"properties": {
+						"attrs__key": {
+							"type": "string",
+							"description": "Атрибут и его значение"
+						}
+					}
+				},
+				"price": {
+					"type": "string",
+					"description": "Цена"
+				},
+				"hit_count": {
+					"type": "integer",
+					"description": "Счетчик просмотров объявления"
+				},
+				"phone_hitcount": {
+					"type": "integer",
+					"description": "Счетчик просмотра телефона"
+				},
+				"currency": {
+					"type": "string",
+					"description": "Валюта"
+				},
+				"created_dt": {
+					"type": "string",
+					"description": "Дата создания"
+				},
+				"raise_dt": {
+					"type": "string",
+					"description": "Дата поднятия"
+				},
+				"owner_advert_count": {
+					"type": "integer",
+					"description": "Всего объявлений у пользователя"
+				},
+				"phone_hide": {
+					"type": "boolean",
+					"description": "Скрытие телефона"
+				},
+				"locations": {
+					"type": "array",
+					"items":{
+					  "type": "string"
+					 }
+				},
+				"zoom": {
+					"type": "string"
+				},
+				"negotiable_price": {
+					"type": "boolean",
+					"description": "Договорная цена"
+				},
+				"exchange": {
+					"type": "boolean",
+					"description": "Обмен"
+				},
+				"price_description": {
+					"type": "string",
+					"description": "Описание цены"
+				},
+				"in_top": {
+					"type": "boolean",
+					"description": "Объявления в топе"
+				},
+				"is_editable": {
+					"type": "boolean",
+					"description": "Доступность для обновления"
+				}
+			}
+		}
+	}
+}
