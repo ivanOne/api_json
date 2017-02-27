@@ -8,9 +8,8 @@
 	"schemes": [
 		"https"
 	],
-	"basePath": "/api/items",
 	"paths": {
-		"/": {
+		"/api/items/": {
 			"get": {
 				"summary": "Список объявлений",
 				"description": "Вернет список всех объявлений",
